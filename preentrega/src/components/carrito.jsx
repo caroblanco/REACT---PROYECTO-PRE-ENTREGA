@@ -1,16 +1,17 @@
 import '../styles/carrito.css'
 import CardCarrito from './cardCarrito.jsx';
-import { useState } from 'react';
+import { useState } from 'react';  
+import { useContext } from 'react';
+import { CarritoContext } from '../context/carritoContext.jsx';
 
-function Carrito({productosCarrito, funcionBorrar, total}){
-
- 
+function Carrito({}){
+    const {productosCarrito, vaciarCarrito, borrarProdCarrito, total} = useContext(CarritoContext);
 
     return (
         <div className='carrito-container'>
             {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
                 <>
-                <CardCarrito producto={producto} funcionBorrar={funcionBorrar} /> 
+                <CardCarrito producto={producto} funcionBorrar={borrarProdCarrito} /> 
                 </>
             ))
             : <h3>El carrito esta vacio</h3>}

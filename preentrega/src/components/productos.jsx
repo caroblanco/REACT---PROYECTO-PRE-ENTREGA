@@ -2,12 +2,15 @@ import '../styles/productos.css';
 import React, { useState, useEffect } from 'react';
 import Carrito from './carrito.jsx';
 import CardProd from './cardProd.jsx';
+import { useContext } from 'react';
+import { CarritoContext } from '../context/carritoContext.jsx';
 
-function Productos({funcionCarrito}) {
+function Productos({}) {
     const [productos, setProductos] = useState([]); // Local state for products
     //const [productosCarrito, setProductosCarrito] = useState([]);
     const [cargando, setCargando] = useState(true); // Set initial loading state to true
     const [error, setError] = useState(null);
+    const {funcionCarrito} = useContext(CarritoContext);
 
     useEffect(() => {
         fetch('https://6810114727f2fdac24103476.mockapi.io/products/product')

@@ -16,41 +16,9 @@ import { Navigate } from 'react-router-dom';
 import Footer from './components/Footer';
 
 function App() {
-  const [productosCarrito, setProductosCarrito] = useState([])
   const [usuarioLogeado, setUsuarioLogeado] = useState(false)
   const [adminLogeado, setAdminLogeado] = useState(false)
-  const [total, setTotal] = useState(0)
 
-  function funcionCarrito(producto) {
-    const existe = productosCarrito.find((item) => item.id === producto.id);
-    let productosActualizados;
-
-    if (existe) {
-        productosActualizados = productosCarrito.map((item) => {
-            if (item.id === producto.id) {
-                return { ...item, cantidad: item.cantidad + producto.cantidad };
-            }
-            return item;
-        });
-    } else {
-        productosActualizados = [...productosCarrito, producto];
-    }
-
-    setProductosCarrito(productosActualizados);
-
-    // Calcula el total usando el array actualizado
-    const totalActualizado = productosActualizados.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-    setTotal(totalActualizado);
-  }
-
-  function borrarProdCarrito(id) {
-    const productosActualizados = productosCarrito.filter((item) => item.id !== id);
-    setProductosCarrito(productosActualizados);
-    const totalActualizado = productosActualizados.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-    setTotal(totalActualizado);
-    
-  } 
-  
   function manejarAdmin() {
     setAdminLogeado(!adminLogeado);
   }
@@ -62,15 +30,15 @@ function App() {
   return (
     <Router>
       <div id="root">
-        <Nav productosCarrito={productosCarrito} />
+        <Nav/>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/productos" element={<Productos funcionCarrito={funcionCarrito} />} />  
-            <Route path="/carrito" element={<Carrito productosCarrito={productosCarrito} funcionBorrar={borrarProdCarrito} total = {total}/>} />    
+            <Route path="/productos" element={<Productos/>} />  
+            <Route path="/carrito" element={<Carrito/>} />    
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contacto />} />
-            <Route path="/productos/:id" element={<ProductoDetalle funcionCarrito={funcionCarrito} />} />
+            <Route path="/productos/:id" element={<ProductoDetalle/>} />
             <Route path="/login" element={<Login setLogeadoAdmin={manejarAdmin} setLogeadoUser={manejarUser} />} />
             <Route path="/admin" element={adminLogeado ? <Admin /> : <Navigate to="/login" />} />
           </Routes>

@@ -6,8 +6,11 @@ import call from "../assets/llamar.png"
 import Productos from './productos.jsx';
 import Carrito from './carrito.jsx';
 import '../styles/nav.css';
+import { useContext } from 'react';
+import { CarritoContext } from '../context/carritoContext.jsx';
 
-function Nav({productosCarrito = []}) {  
+function Nav({}) {  
+    const {productosCarrito} = useContext(CarritoContext);
     return (  
         <nav className="nav-bar">  
             <ul style={{ listStyle: "none", display: "flex", justifyContent: "space-around", margin: 0, alignItems:"center" }}>  

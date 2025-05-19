@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/productoDetalle.css';
+import { CarritoContext } from '../context/carritoContext.jsx';
+import { useContext } from 'react';
 
-function ProductoDetalle({ funcionCarrito }) {
+function ProductoDetalle({ }) {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [cantidad, setCantidad] = useState(1);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
+    const {funcionCarrito} = useContext(CarritoContext);
 
     useEffect(() => {
         console.log('ID del producto:', id); // Depuración
