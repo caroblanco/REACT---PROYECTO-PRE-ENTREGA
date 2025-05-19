@@ -14,7 +14,6 @@ import Login from './components/Login';
 import Admin from './components/Admin';
 import { Navigate } from 'react-router-dom';
 import Footer from './components/Footer';
-import  './app.css'
 
 function App() {
   const [productosCarrito, setProductosCarrito] = useState([])
