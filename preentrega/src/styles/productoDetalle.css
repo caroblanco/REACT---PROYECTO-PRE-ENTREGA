@@ -1,0 +1,35 @@
+.producto-detalle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.producto-detalle-card{
+    padding: 20px;
+}
+
+.producto-detalle-card p {
+    max-width: 300px;
+}
+
+.producto-detalle-card img{
+    width: 400px;
+    height: 400px;
+    
+}
+
+.productos-button{
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    color: black;
+    padding: 5px;
+    margin: 7px;
+    cursor: pointer;
+}
+.productos-button:hover{
+    background-color: rgb(110, 109, 109);
+    color: white;
+    transition: 0.3s;
+}

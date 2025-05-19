@@ -1,0 +1,38 @@
+
+.footer{
+    background-color: rgb(68, 68, 68);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.footer ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer li{
+    display: "flex";
+    justify-content: "space-around";
+    align-items:"center";
+    decoration:bold;
+    color: white;
+    padding-right: 50px;
+}
+
+.footer li:hover{
+    background-color: rgb(110, 109, 109);
+    color: white;
+    transition: 0.3s;
+}

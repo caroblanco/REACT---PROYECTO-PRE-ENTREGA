@@ -1,0 +1,58 @@
+.carrito-container{
+    display :flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+
+}
+
+.carrito-container p{
+    
+}
+
+.carrito-card {
+    display: flex; /* Cambia el diseño interno a flexbox */
+    flex-direction: row; /* Alinea los elementos en una fila */
+    align-items: center; /* Centra los elementos verticalmente */
+    background-color: rgb(248, 221, 247);
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 200px; /* Ajusta la altura según sea necesario */
+    text-align: left; /* Alinea el texto a la izquierda */
+    color: rgb(110, 109, 109);
+    margin: 10px;
+    padding: 20px; /* Agrega espacio interno */
+    gap: 15px; /* Espaciado entre los elementos */
+}
+
+.carrito-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px; /* Cambia a un borde cuadrado si prefieres */
+    flex-shrink: 0; /* Evita que la imagen se reduzca */
+}
+
+.carrito-card-content {
+    display: flex;
+    flex-direction: column; /* Alinea el texto verticalmente */
+    flex-grow: 1; /* Permite que el contenido ocupe el espacio disponible */
+    text-wrap: wrap; /* Permite que el texto se ajuste al contenedor */
+    padding: 10px;
+}
+
+.carrito-button {
+    background-color: rgb(248, 221, 247);
+    border: 1px solid black;
+    border-radius: 8px;
+    color: rgb(110, 109, 109);
+    padding: 5px;
+    margin-left: auto; /* Empuja el botón al final de la fila */
+    cursor: pointer;
+}
+
+.carrito-button:hover {
+    background-color: rgb(110, 109, 109);
+    color: white;
+    transition: 0.3s;
+}

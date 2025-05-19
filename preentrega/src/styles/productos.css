@@ -1,0 +1,54 @@
+.productos-container{
+    display :flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    padding: 10px;
+    
+}
+
+.productos-card{
+    background-color: rgb(197, 196, 196);
+
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    
+    color: black;
+    margin: 5px;
+    overflow-wrap: break-word;
+    white-space: normal;
+   
+}
+
+.productos-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.productos-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.productos-button{
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    color: black;
+    padding: 5px;
+    margin: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.productos-button:hover{
+    background-color: rgb(110, 109, 109);
+    color: white;
+    transition: 0.3s;
+}

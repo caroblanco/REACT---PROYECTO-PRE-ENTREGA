@@ -1,0 +1,19 @@
+#root {
+  display: flex;
+  flex-direction: column; /* Arrange children vertically */
+  justify-content: space-between; /* Push footer to the bottom */
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100vh; /* Ensure the root takes the full height of the viewport */
+}
+
+main {
+  flex-grow: 1; /* Allow the main content to grow and push the footer down */
+}
+
+footer {
+  background-color: #f1f1f1; /* Optional: Add a background color */
+  padding: 10px;
+  text-align: center;
+}
