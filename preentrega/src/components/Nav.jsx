@@ -1,10 +1,5 @@
 import React from 'react';  
 import { Link } from 'react-router-dom';
-import home from "../assets/hogar.png"
-import acerca from "../assets/acerca-de.png"
-import call from "../assets/llamar.png"
-import Productos from './productos.jsx';
-import Carrito from './carrito.jsx';
 import '../styles/nav.css';
 import { useContext } from 'react';
 import { CarritoContext } from '../context/carritoContext.jsx';

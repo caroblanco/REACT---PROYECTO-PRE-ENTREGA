@@ -3,10 +3,17 @@ import CardCarrito from './cardCarrito.jsx';
 import { useState } from 'react';  
 import { useContext } from 'react';
 import { CarritoContext } from '../context/carritoContext.jsx';
+import { Navigate } from 'react-router-dom';
 
-function Carrito({}){
+function Carrito({usuarioLogeado}){
     const {productosCarrito, vaciarCarrito, borrarProdCarrito, total} = useContext(CarritoContext);
 
+    if(!usuarioLogeado){
+        return(
+            <Navigate to="/login" replace/>
+        )
+    }
+    
     return (
         <div className='carrito-container'>
             {productosCarrito.length > 0 ? productosCarrito.map((producto) => (

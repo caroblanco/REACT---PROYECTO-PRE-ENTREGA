@@ -35,12 +35,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/productos" element={<Productos/>} />  
-            <Route path="/carrito" element={<Carrito/>} />    
+            <Route path="/carrito" element={<Carrito usuarioLogeado={usuarioLogeado}/>} />    
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contacto />} />
             <Route path="/productos/:id" element={<ProductoDetalle/>} />
-            <Route path="/login" element={<Login setLogeadoAdmin={manejarAdmin} setLogeadoUser={manejarUser} />} />
-            <Route path="/admin" element={adminLogeado ? <Admin /> : <Navigate to="/login" />} />
+            <Route path="/login" element={<Login user={usuarioLogeado} admin={adminLogeado} setLogeadoAdmin={manejarAdmin} setLogeadoUser={manejarUser} />} />
+            <Route path="/admin" element={adminLogeado ? <Admin /> : <Navigate to="/login" replace/>} />
           </Routes>
         </main>
         <Footer />

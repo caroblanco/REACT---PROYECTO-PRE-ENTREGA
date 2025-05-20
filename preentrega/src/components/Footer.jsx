@@ -5,15 +5,12 @@ import { useState } from 'react';
 
 function Footer() {  
     return (  
-        <footer className="footer">  
-            
+        <footer className="footer">   
             <ul>  
-                <li className="nav-bar li">
-                    
+                <li className="nav-bar li"> 
                     <Link to="/about" >Nosotros</Link>
                 </li>  
                 <li className="nav-bar li">
-                    
                     <Link to="/contacto" >Contacto</Link>
                 </li>  
             </ul>   
