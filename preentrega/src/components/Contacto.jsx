@@ -2,7 +2,9 @@ function Contacto() {
   return (
     <div>
       <h1>Contacto</h1>
-      <p>This is the contact page.</p>
+      <ul>
+        <a href="https://www.linkedin.com/in/carolina-blanco-/" target="_blank" rel="noopener noreferrer">Linkedin profile</a>
+      </ul>
     </div>
   );
 }

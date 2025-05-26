@@ -1,14 +1,16 @@
 import '../styles/carrito.css'
 import CardCarrito from './cardCarrito.jsx';
-import { useState } from 'react';  
+import { use, useState } from 'react';  
 import { useContext } from 'react';
 import { CarritoContext } from '../context/carritoContext.jsx';
 import { Navigate } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext.jsx';
 
-function Carrito({usuarioLogeado}){
+function Carrito({}){
     const {productosCarrito, vaciarCarrito, borrarProdCarrito, total} = useContext(CarritoContext);
+    const {user} = useAuthContext();
 
-    if(!usuarioLogeado){
+    if(!user){
         return(
             <Navigate to="/login" replace/>
         )

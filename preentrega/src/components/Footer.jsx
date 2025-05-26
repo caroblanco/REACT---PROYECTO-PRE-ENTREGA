@@ -11,7 +11,7 @@ function Footer() {
                     <Link to="/about" >Nosotros</Link>
                 </li>  
                 <li className="nav-bar li">
-                    <Link to="/contacto" >Contacto</Link>
+                    <Link to="/contact" >Contacto</Link>
                 </li>  
             </ul>   
             <p>&copy; 2025 - Caro devorando en react</p> 
