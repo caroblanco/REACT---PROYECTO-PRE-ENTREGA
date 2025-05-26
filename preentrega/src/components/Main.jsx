@@ -2,8 +2,8 @@ import React from 'react';
 function Main() {  
     return (  
         <main style={{ padding: "20px" }}>  
-            <h2>Contenido Principal</h2>  
-            <p>Este es un ejemplo de contenido dentro del área principal.</p>  
+            <h2>Bienvenide a Sueteres Maria</h2>  
+            <p>Seleccione "Productos" para ver el stock disponible. Para pedidos personalizados, porfavor pongase en contacto con nosotros.</p>  
         </main>  
     );  
 }  
