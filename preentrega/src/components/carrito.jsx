@@ -18,14 +18,18 @@ function Carrito({}){
     
     return (
         <div className='carrito-container'>
+            <div>
             {productosCarrito.length > 0 ? productosCarrito.map((producto) => (
                 <>
                 <CardCarrito producto={producto} funcionBorrar={borrarProdCarrito} /> 
                 </>
             ))
             : <h3>El carrito esta vacio</h3>}
-            {total > 0 ? <span>Total: {total.toFixed(2)} </span> : <></>}
-            {productosCarrito.length > 0 ? <button className='carrito-button' onClick={vaciarCarrito}>Vaciar carrito</button> : <></>}
+            </div>
+            <div>
+                {total > 0 ? <span>Total: {total.toFixed(2)} </span> : <></>}
+                {productosCarrito.length > 0 ? <button className='carrito-button' onClick={vaciarCarrito}>Vaciar carrito</button> : <></>}
+            </div>
         </div>
     );
 }

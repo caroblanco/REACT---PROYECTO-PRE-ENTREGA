@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem('authToken', token);
     //setitem para guardar el token en localStorage, asi no se pierde al recargar la pagina
     setUser(username);
+    console.log(`Usuario ${username} ha iniciado sesión.`);
   };
   const logout = () => {
     localStorage.removeItem('authToken');
