@@ -11,6 +11,7 @@ function Nav({}) {
     // Sumar la cantidad total de productos
     const totalCantidad = productosCarrito.reduce((acc, prod) => acc + (prod.cantidad || 0), 0);
     const {user} = useAuthContext();
+    const {admin} = useAuthContext();
 
     return (  
         <nav className="nav-bar">  
@@ -32,6 +33,9 @@ function Nav({}) {
                 <li className="nav-bar li">
                     <Link to={user ? "/profile" : "/login"} >{user ? "Perfil" : "Login"}</Link>
                 </li>  
+                {admin ? <li className="nav-bar li">
+                    <Link to="/admin/agregar-producto" >Agregar Producto</Link>
+                </li> : null}
             </ul>  
         </nav>  
     );  

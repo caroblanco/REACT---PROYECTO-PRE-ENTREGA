@@ -16,8 +16,11 @@ import Admin from './components/Admin';
 import { Navigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import Perfil from './components/profile';
+import FormularioProducto from './components/formularioProd';
+import { dispararSweet } from './assets/sweetalert'
 
 function App() {
+  
   return (
     <Router>
       <div id="root">
@@ -33,6 +36,7 @@ function App() {
             <Route path = "/login" element = {<Login2/>}/>
             <Route path="/admin" element={<Admin />} />
             <Route path="/profile" element={<Perfil />} />
+            <Route path="/admin/agregar-producto" element={<FormularioProducto/>} />
           </Routes>
         </main>
         <Footer />
