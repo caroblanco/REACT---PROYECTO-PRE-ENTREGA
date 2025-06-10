@@ -4,44 +4,22 @@ import Carrito from './carrito.jsx';
 import CardProd from './cardProd.jsx';
 import { useContext } from 'react';
 import { CarritoContext } from '../context/carritoContext.jsx';
+import { ProdContext } from '../context/ProdContext.jsx';
 
 function Productos({}) {
-    const [productos, setProductos] = useState([]); // Local state for products
-    //const [productosCarrito, setProductosCarrito] = useState([]);
     const [cargando, setCargando] = useState(true); // Set initial loading state to true
     const [error, setError] = useState(null);
     const {funcionCarrito} = useContext(CarritoContext);
+    const {productos,obtenerProductos} = useContext(ProdContext);
 
     useEffect(() => {
-        fetch('https://6810114727f2fdac24103476.mockapi.io/products/product')
-            .then((respuesta) => respuesta.json())
-            .then((datos) => {
-                setProductos(datos); // Update local productos state
-                setCargando(false);
-            })
-            .catch((error) => {
+        obtenerProductos()
+            .then(() => setCargando(false))
+            .catch(() => {
                 setError('Hubo un problema al cargar los productos.');
                 setCargando(false);
             });
-    }, []);
-
-    /*function funcionCarrito(producto) {
-        const existe = productosCarrito.find((item) => item.id === producto.id);
-        if (existe) {
-            const productosActualizados = productosCarrito.map((item) => {
-                if (item.id === producto.id) {
-                    return { ...item, cantidad: item.cantidad + producto.cantidad };
-                }
-                return item;
-            });
-            setProductosCarrito(productosActualizados);
-        } else {
-            setProductosCarrito([...productosCarrito, producto]);
-        }
-    }*/
-
-
-    
+    }, [obtenerProductos]);
 
     function funcionEnProductos(producto) { 
         funcionCarrito(producto);

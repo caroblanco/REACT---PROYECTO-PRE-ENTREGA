@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/productoDetalle.css';
 import { CarritoContext } from '../context/carritoContext.jsx';
 import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext.jsx';
+import { ProdContext } from '../context/ProdContext.jsx';
 
 function ProductoDetalle({ }) {
+    const {admin} = useContext(AuthContext);
     const { id } = useParams();
-    const [producto, setProducto] = useState(null);
     const [cantidad, setCantidad] = useState(1);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
     const {funcionCarrito} = useContext(CarritoContext);
+    const {buscarProducto, productoEncontrado, eliminarProducto} = useContext(ProdContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log('ID del producto:', id); // Depuración
-        fetch(`https://6810114727f2fdac24103476.mockapi.io/products/product/${id}`)
-            .then((respuesta) => respuesta.json())
-            .then((datos) => {
-                console.log('Datos del producto:', datos); // Depuración
-                setProducto(datos);
+        buscarProducto(id)
+            .then(() => {
                 setCargando(false);
             })
             .catch((error) => {
@@ -26,8 +27,7 @@ function ProductoDetalle({ }) {
                 setError('Hubo un problema al cargar el producto.');
                 setCargando(false);
             });
-    }, [id]);// Dependencia de id para recargar el producto si cambia, cada vez que el id cambia, se vuelve a ejecutar el useEffect
-    // Esto es útil si el componente se vuelve a montar con un nuevo id
+    }, [id, buscarProducto]);
 
     function handleIncrement() {
         setCantidad(cantidad + 1);
@@ -40,11 +40,20 @@ function ProductoDetalle({ }) {
     }
 
     function handleAddToCart() {
-        if (producto) {
-            const productoConCantidad = { ...producto, cantidad };
+        if (productoEncontrado) {
+            const productoConCantidad = { ...productoEncontrado, cantidad };
             funcionCarrito(productoConCantidad);
         }
     }
+
+    const handleEliminar = async (id) => {
+        try {
+            await eliminarProducto(id);
+            navigate('/productos'); // Redirige antes de que el componente intente recargar el producto
+        } catch (error) {
+            // Manejo de error opcional
+        }
+    };
 
     if (cargando) {
         return <p>Cargando...</p>;
@@ -54,8 +63,11 @@ function ProductoDetalle({ }) {
         return <p>{error}</p>;
     }
 
-    if (!producto) {
+    if (!productoEncontrado) {
         return <p>No se encontró el producto.</p>;
+    }
+     function navegar() {
+    navigate(`/admin/editarProducto/${id}`); // Navega a la ruta deseada
     }
 
     return (
@@ -63,18 +75,26 @@ function ProductoDetalle({ }) {
             <h1>Detalle del Producto</h1>
                 <div className="producto-detalle-container">
                 <div className="producto-detalle-card">
-                    <img src={producto.imagen} alt={producto.nombre} />
+                    <img src={productoEncontrado.imagen} alt={productoEncontrado.nombre} />
                 </div>
                 <div className="producto-detalle-card">
-                    <h2>{producto.nombre}</h2>
-                    <p>{producto.descripcion}</p>
-                    <p style={{fontWeight: 'bold'}}>${producto.precio}</p>
+                    <h2>{productoEncontrado.nombre}</h2>
+                    <p>{productoEncontrado.descripcion}</p>
+                    <p style={{fontWeight: 'bold'}}>${productoEncontrado.precio}</p>
                     <div>
                         <button className="productos-button" onClick={handleDecrement}>-</button>
                         <span>{cantidad}</span>
                         <button className="productos-button" onClick={handleIncrement}>+</button>
                     </div>
-                    <button className="productos-button" onClick={handleAddToCart}>Agregar al carrito</button>
+                    {admin ? (<div>
+                            <button className="productos-button" onClick={navegar}>Editar producto</button>
+                            <button className="productos-button" onClick={() => handleEliminar(productoEncontrado.id)}>
+  Eliminar producto
+</button>
+                            </div>
+                        ) : (
+                        <button className="productos-button" onClick={handleAddToCart}>Agregar al carrito</button>
+                        )}
                 </div>
             </div>
         </div>

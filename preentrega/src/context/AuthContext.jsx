@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from 'react';
-// Crear el contexto de autenticación
-const AuthContext = createContext();
+
+export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(false);
@@ -8,12 +8,13 @@ export function AuthProvider({ children }) {
   
   
   //TODO : Implementar lógica para verificar si el usuario es admin
-  const login = (username, isAdmin = true) => {
+  const login = (username, isAdmin) => {
     // Simulando la creación de un token (en una app real, esto sería generado por un servidor)
     const token = `fake-token-${username}`;
     localStorage.setItem('authToken', token);
     //setitem para guardar el token en localStorage, asi no se pierde al recargar la pagina
     setUser(username);
+
     setAdmin(isAdmin);
     console.log(`Usuario ${username} ha iniciado sesión.`);
   };

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { agregarProducto } from '../assets/requests'; // Asegúrate de importar la función
+import React, { useState, useContext } from 'react';
+import { ProdContext } from '../context/ProdContext.jsx';
 
-function FormularioProducto({  }) {
+function FormularioProducto() {
   const [producto, setProducto] = useState({
     nombre: '',
     precio: '',
@@ -9,6 +9,7 @@ function FormularioProducto({  }) {
     imagen: ''
   });
   const [errores, setErrores] = useState({});
+  const { agregarProducto } = useContext(ProdContext);
 
   const validarFormulario = () => {
     const nuevosErrores = {};
@@ -41,7 +42,7 @@ function FormularioProducto({  }) {
           setProducto({ nombre: '', precio: '', descripcion: '', imagen: '' });
           setErrores({});
         })
-        .catch((error) => {
+        .catch(() => {
           alert('Error al agregar el producto');
         });
     }

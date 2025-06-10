@@ -25,3 +25,26 @@ export const agregarProducto = (producto) => {
   });
 };
 
+export const eliminarProducto = (id) => {
+  return new Promise((resolve,reject) => {
+    const eliminarProducto = async (id) => {
+    const confirmar = window.confirm('¿Estás seguro de eliminar?');
+    if (confirmar) {
+      try {
+        const respuesta = await fetch(`https://mockapi.io/6810114727f2fdac24103476/v1/productos/${id}`, {
+          method: 'DELETE',
+        });
+        if (!respuesta.ok) throw new Error('Error al eliminar');
+        alert('Producto eliminado correctamente.');
+      } catch (error) {
+        console.error(error.message);
+        alert('Hubo un problema al eliminar el producto.');
+      }
+    }
+    };
+
+  eliminarProducto(id)
+    .then(() => resolve())
+    .catch((error) => reject(error));
+});
+}

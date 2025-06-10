@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import Perfil from './components/profile';
 import FormularioProducto from './components/formularioProd';
 import { dispararSweet } from './assets/sweetalert'
+import FormularioEdicion from './components/formularioEdicion';
 
 function App() {
   
@@ -36,7 +37,8 @@ function App() {
             <Route path = "/login" element = {<Login2/>}/>
             <Route path="/admin" element={<Admin />} />
             <Route path="/profile" element={<Perfil />} />
-            <Route path="/admin/agregar-producto" element={<FormularioProducto/>} />
+            <Route path="/admin/agregar-producto" element={<FormularioProducto />} />
+            <Route path="/admin/editarProducto/:id" element={<FormularioEdicion />} />
           </Routes>
         </main>
         <Footer />
