@@ -19,9 +19,15 @@ import Perfil from './components/profile';
 import FormularioProducto from './components/formularioProd';
 import { dispararSweet } from './assets/sweetalert'
 import FormularioEdicion from './components/formularioEdicion';
+import { useAuthContext } from './context/AuthContext'
+import { useEffect } from 'react';
 
 function App() {
-  
+  const {verificacionLog} = useAuthContext();
+  useEffect(() => {
+          verificacionLog();
+      }, []);
+
   return (
     <Router>
       <div id="root">

@@ -31,19 +31,19 @@ function handleDecrement() {
 
   return (
     <div className="productos-container">
-                    <div className="productos-card">
+                    <div className="productos-card mb-3">
                         <div>
-                        <h3>{producto.nombre}</h3>
-                        <p>{producto.descripcion}</p>
-                        <img className='productos-image' src={producto.imagen}></img>
+                        <h3 className = "mt-3">{producto.nombre}</h3>
+                        
+                        <img className='productos-image mb-2' src={producto.imagen}></img>
                         <p style={{fontWeight: 'bold'}}>${producto.precio}</p>
-                        <div>
+                        <div className="mb-3">
                           <button className="productos-button" onClick ={handleDecrement}>-</button>
                           <span>{cantidad}</span>
                           <button className="productos-button" onClick ={handleIncrement}>+</button>
                         </div>
-                        <button className='productos-button' onClick={handleAddToCart}>Agregar al carrito</button>
-                        <button className='productos-button' onClick={navegar}>Ver producto</button>
+                        <button className="btn btn-secondary mb-2" onClick={handleAddToCart}>Agregar al carrito</button>
+                        <button className='btn btn-secondary mb-3' onClick={navegar}>Ver producto</button>
                         </div>
                     </div>
     </div>

@@ -27,7 +27,7 @@ function ProductoDetalle({ }) {
                 setError('Hubo un problema al cargar el producto.');
                 setCargando(false);
             });
-    }, [id, buscarProducto]);
+    }, [id]);
 
     function handleIncrement() {
         setCantidad(cantidad + 1);

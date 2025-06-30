@@ -1,31 +1,56 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { crearUsuario, iniciarSesion } from "../auth/firebase";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 export const AuthContext = createContext();
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(false);
-  // Estado para manejar si el usuario es admin, por defecto es false
-  
-  
-  //TODO : Implementar lógica para verificar si el usuario es admin
-  const login = (username, isAdmin) => {
-    // Simulando la creación de un token (en una app real, esto sería generado por un servidor)
-    const token = `fake-token-${username}`;
-    localStorage.setItem('authToken', token);
-    //setitem para guardar el token en localStorage, asi no se pierde al recargar la pagina
-    setUser(username);
+  const [loading, setLoading] = useState(true);
 
-    setAdmin(isAdmin);
-    console.log(`Usuario ${username} ha iniciado sesión.`);
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+      // Lógica de admin: puedes cambiar el email por el que quieras
+      setAdmin(firebaseUser?.email === "admin@gmail.com");
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const login = (email, password) => iniciarSesion(email, password);
+  const register = (email, password) => crearUsuario(email, password);
+  const logout = () => signOut(getAuth());
+
+  function verificacionLog(){
+    return (
+      new Promise((resolve, reject) => {
+        const token = localStorage.getItem('authToken');
+        if (token && token == `fake-token-admin@gmail.com`) {
+          // Si hay un token, el usuario está autenticado
+          setAdmin(true);
+          resolve();
+        } else if(token){
+          setUser(true);
+          setAdmin(true); //TODO ELIMINAR
+          resolve();
+        }
+        else {
+          // Si no hay token, el usuario no está autenticado
+          reject(false);
+        }
+      }))
   };
-  const logout = () => {
-    localStorage.removeItem('authToken');
-    setUser(null);
-    setAdmin(false);
-  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, admin }}>
+    <AuthContext.Provider value={{ user, admin, login, register, logout, loading, verificacionLog }}>
       {children}
-    </AuthContext.Provider> );
+    </AuthContext.Provider>
+  );
 }
-export const useAuthContext = () => useContext(AuthContext);
+
+export function useAuthContext() {
+  return useContext(AuthContext);
+}

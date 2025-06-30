@@ -45,56 +45,50 @@ function Login() {
 
   if (showRegister) {
     return (
-      <div>
-        <form onSubmit={handleRegister}>
+      <div className='d-flex justify-content-center align-items-center mt-3'>
+        <form className="p-4 border rounded shadow w-50 " onSubmit={handleRegister}>
           <h2>Registrarse</h2>
-          <div>
-            <label>Mail:</label>
-            <input
-              type="text"
-              value={registerUser}
-              onChange={(e) => setRegisterUser(e.target.value)}
-            />
+          <div className="mb-3 ">
+            <label className="form-label">Email</label>
+            <input type="text"
+                    value={registerUser}
+                    onChange={(e) => setRegisterUser(e.target.value)} className="form-control" required />
           </div>
-          <div>
-            <label>Contraseña:</label>
-            <input
-              type="password"
-              value={registerPass}
-              onChange={(e) => setRegisterPass(e.target.value)}
-            />
+          <div className="mb-3">
+            <label className="form-label">Contraseña</label>
+            <input type="password"
+                    value={registerPass}
+                    onChange={(e) => setRegisterPass(e.target.value)} className="form-control" required />
           </div>
-          <button type="submit">Registrarse</button>
-          
+          <div className="d-grid gap-2 col-6 mx-auto">
+            <button className="btn btn-primary">Registrarse</button>
+            <button type="button" className="btn btn-secondary" onClick={() => setShowRegister(false)}>Iniciar sesión</button>
+          </div>
         </form>
-        <button type="button" onClick={() => setShowRegister(false)}>Iniciar sesión</button>
       </div>
     );
   } else{
     return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='d-flex justify-content-center align-items-center mt-3'>
+      <form className="p-4 border rounded shadow w-50 " onSubmit={handleSubmit}>
         <h2>Iniciar sesión</h2>
-        <div>
-          <label>Mail:</label>
-          <input
-            type="text"
-            value={loginUser}
-            onChange={(e) => setLoginUser(e.target.value)}
-          />
+        <div className="mb-3 ">
+          <label className="form-label">Email</label>
+          <input type="text"
+              value={loginUser}
+              onChange={(e) => setLoginUser(e.target.value)} className="form-control" required/>
         </div>
-        <div>
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            value={loginPass}
-            onChange={(e) => setLoginPass(e.target.value)}
-          />
+        <div className="mb-3">
+          <label className="form-label">Contraseña</label>
+          <input type="password"
+                  value={loginPass}
+                  onChange={(e) => setLoginPass(e.target.value)} className="form-control" required />
         </div>
-        <button type="submit">Iniciar sesión</button>
-        
+        <div className="d-grid gap-2 col-6 mx-auto">
+          <button className="btn btn-primary">Iniciar sesión</button>
+          <button type="button" className="btn btn-secondary" onClick={() => setShowRegister(true)}>Registrarse</button>
+        </div>
       </form>
-      <button type="button" onClick={() => setShowRegister(true)}>Registrarse</button>
     </div>
   );
   }
@@ -102,3 +96,5 @@ function Login() {
 }
 
 export default Login;
+
+    

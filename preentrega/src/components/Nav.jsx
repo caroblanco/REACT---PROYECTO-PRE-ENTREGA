@@ -4,6 +4,8 @@ import '../styles/nav.css';
 import { useContext } from 'react';
 import { CarritoContext } from '../context/carritoContext.jsx';
 import { useAuthContext } from '../context/AuthContext.jsx';
+import { FaShoppingCart,FaUser, FaHome, FaPlus  } from "react-icons/fa";
+import { TiThMenu } from "react-icons/ti";
 
 function Nav({}) {  
     const {productosCarrito} = useContext(CarritoContext);
@@ -17,24 +19,24 @@ function Nav({}) {
         <nav className="nav-bar">  
             <ul style={{ listStyle: "none", display: "flex", justifyContent: "space-around", margin: 0, alignItems:"center" }}>  
                 <li className="nav-bar li">
-                    <Link to="/" >Inicio</Link>
+                    <Link to="/" ><FaHome /> Inicio</Link>
                 </li>  
                 <li className="nav-bar li">
-                    <Link to="/productos" >Productos</Link>
+                    <Link to="/productos" ><TiThMenu /> Productos</Link>
                 </li>   
                 <li className="nav-bar li">
                     <Link to="/carrito" >
-                        Carrito
+                        <FaShoppingCart /> Carrito
                         <span>
                             {totalCantidad > 0 ? `: ${totalCantidad}` : ""}
                         </span>
                     </Link>
                 </li>  
                 <li className="nav-bar li">
-                    <Link to={user ? "/profile" : "/login"} >{user ? "Perfil" : "Login"}</Link>
+                    <Link to={user ? "/profile" : "/login"} ><FaUser />{user ? " Perfil" : " Login"}</Link>
                 </li>  
                 {admin ? <li className="nav-bar li">
-                    <Link to="/admin/agregar-producto" >Agregar Producto</Link>
+                    <Link to="/admin/agregar-producto" ><FaPlus /> Agregar Producto</Link>
                 </li> : null}
             </ul>  
         </nav>  
