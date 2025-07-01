@@ -113,7 +113,6 @@ export function ProdProvider({ children }) {
           }
           const data = await respuesta.json();
           resolve(data);
-          alert('Producto actualizado correctamente.');
           } catch (error) {
               console.error(error.message);
               alert('Hubo un problema al actualizar el producto.' + error.message);

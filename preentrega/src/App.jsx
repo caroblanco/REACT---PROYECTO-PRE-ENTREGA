@@ -10,7 +10,6 @@ import Nav from './components/Nav'
 import About from './components/About';
 import Contacto from './components/Contacto';
 import ProductoDetalle from './components/productoDetalle';
-import Login from './components/Login';
 import Login2 from './components/login2';
 import Admin from './components/Admin';
 import { Navigate } from 'react-router-dom';

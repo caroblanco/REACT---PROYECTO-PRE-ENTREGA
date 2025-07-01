@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ProdContext } from '../context/ProdContext.jsx';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext.jsx';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function FormularioEdicion({ onActualizar }) {
   const { buscarProducto, productoEncontrado, editarProducto } = useContext(ProdContext);
@@ -10,6 +10,7 @@ function FormularioEdicion({ onActualizar }) {
   const [producto, setProducto] = useState(null);
   const [errores, setErrores] = useState({});
   const {admin} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   if(!admin){
     return(
@@ -47,6 +48,7 @@ function FormularioEdicion({ onActualizar }) {
         editarProducto(producto).then((actualizado) => {
         setProducto(actualizado);
         alert('Producto actualizado correctamente.');
+        navigate('/productos/' + producto.id); // <-- Así está bien
         }).catch((error) => {
         console.error('Error al actualizar el producto:', error);
         alert('Hubo un problema al actualizar el producto.');
@@ -76,52 +78,66 @@ function FormularioEdicion({ onActualizar }) {
   if (!producto) return <p>Cargando producto...</p>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Editar Producto</h2>
-      <div>
-        <label>Nombre:</label>
-        <input
-          type="text"
-          name="nombre"
-          value={producto.nombre || ''}
-          onChange={handleChange}
-          required
-        />
+    <div className='d-flex justify-content-center align-items-center mt-3 mb-3'>
+      <form className="p-4 border rounded shadow w-50 " onSubmit={handleSubmit}>
+          <h2>Editar Producto</h2>
+          <div className="mb-3 ">
+            <label className="form-label">Nombre: </label>
+            <input 
+                type="text"
+                name="nombre"
+                value={producto.nombre || ''}
+                onChange={handleChange}
+                required
+                className="form-control" />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Precio: </label>
+            <input type="number"
+            name="precio"
+            value={producto.precio || ''}
+            onChange={handleChange}
+            required
+            min="0" className="form-control"  />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Descripción:</label>
+            <textarea
+              name="descripcion"
+              value={producto.descripcion || ''}
+              onChange={handleChange}
+              required
+              className="form-control"
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Tipo:</label>
+            <input type="text"
+              name="tipo"
+              value={producto.tipo || ''}
+              onChange={handleChange}
+              required
+              className="form-control"
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Imagen (URL):</label>
+            <input
+              type="url"
+              name="imagen"
+              value={producto.imagen || ''}
+              onChange={handleChange}
+              required
+              className="form-control"
+              placeholder="https://ejemplo.com/imagen.jpg"
+            />
+          </div>
+          <button type="submit" className="btn btn-success">Actualizar Producto</button>
+        </form>
       </div>
-      <div>
-        <label>Precio:</label>
-        <input
-          type="number"
-          name="precio"
-          value={producto.precio || ''}
-          onChange={handleChange}
-          required
-          min="0"
-        />
-      </div>
-      <div>
-        <label>Descripción:</label>
-        <textarea
-          name="descripcion"
-          value={producto.descripcion || ''}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Imagen (URL):</label>
-        <input
-          type="url"
-          name="imagen"
-          value={producto.imagen}
-          onChange={handleChange}
-          required
-          placeholder="https://ejemplo.com/imagen.jpg"
-        />
-      </div>
-      <button type="submit">Actualizar Producto</button>
-    </form>
   );
 }
 
 export default FormularioEdicion;
+
+
