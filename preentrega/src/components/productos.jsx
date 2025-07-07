@@ -57,12 +57,12 @@ function Productos({}) {
     } else {
         return (
             <div>
-                <div className="d-flex justify-content-center mt-3">
+                <div className="d-flex justify-content-center align-items-center gap-2 mt-3 mb-4 flex-wrap">
                     <input
                         type="text"
                         placeholder="Buscar productos..."
-                        className="form-control mb-3"
-                        style={{ maxWidth: "300px" }}
+                        className="form-control"
+                        style={{ maxWidth: "260px", borderRadius: "18px" }}
                         value={busqueda}
                         onChange={(e) => setBusqueda(e.target.value)}
                     />
@@ -71,8 +71,10 @@ function Productos({}) {
                         id="dropdown-secondary-button"
                         title="Tipo de producto"
                         variant="secondary"
-                        className="ms-2 mb-3" >
-                        <Dropdown.Item key="null" onClick = {()=> setTipo(null)}>Todos</Dropdown.Item> 
+                        className="mb-0"
+                        style={{ borderRadius: "18px" }}
+                    >
+                        <Dropdown.Item key="null" onClick={() => setTipo(null)}>Todos</Dropdown.Item>
                         <Dropdown.Divider />
                         {tipos.map((tipo, index) => (
                             <Dropdown.Item key={index} onClick={() => setTipo(tipo)}>
@@ -90,15 +92,15 @@ function Productos({}) {
                         />
                     ))}
                 </div>
-                <div className="d-flex justify-content-center my-4">
+                <div className="d-flex justify-content-center my-4 flex-wrap gap-2">
                     {Array.from({ length: totalPaginas }, (_, index) => (
-                    <button
-                        key={index + 1}
-                        className={`btn mx-1 ${paginaActual === index + 1 ? "btn-secondary" : "btn-outline-secondary"}`}
-                        onClick={() => cambiarPagina(index + 1)}
-                    >
-                        {index + 1}
-                    </button>
+                        <button
+                            key={index + 1}
+                            className={`btn ${paginaActual === index + 1 ? "btn-secondary" : "btn-outline-secondary"} rounded-pill px-3`}
+                            onClick={() => cambiarPagina(index + 1)}
+                        >
+                            {index + 1}
+                        </button>
                     ))}
                 </div>
             </div>

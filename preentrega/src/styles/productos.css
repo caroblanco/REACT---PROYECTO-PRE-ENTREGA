@@ -9,9 +9,11 @@
 }
 
 .productos-card{
-    background-color: rgb(228, 228, 228);
-
-    border-radius: 8px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+    padding: 1.2rem 1rem 1.5rem 1rem;
+    transition: box-shadow 0.2s;
     width: 200px;
     text-align: center;
     
@@ -20,6 +22,11 @@
     overflow-wrap: break-word;
     white-space: normal;
    
+}
+
+.productos-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.16);
+    background: #f8f9fa;
 }
 
 .productos-card p {

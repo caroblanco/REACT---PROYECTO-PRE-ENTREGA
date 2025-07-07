@@ -25,18 +25,37 @@ function Nav({}) {
                     <Link to="/productos" ><TiThMenu /> Productos</Link>
                 </li>   
                 <li className="nav-bar li">
-                    <Link to="/carrito" >
+                    <Link to="/carrito" style={{ position: "relative", display: "inline-flex", alignItems: "center" }}>
                         <FaShoppingCart /> Carrito
-                        <span>
-                            {totalCantidad > 0 ? `: ${totalCantidad}` : ""}
-                        </span>
+                        {totalCantidad > 0 && (
+                            <span
+                                style={{
+                                    display: "inline-block",
+                                    minWidth: 22,
+                                    height: 22,
+                                    lineHeight: "22px",
+                                    fontSize: "0.95em",
+                                    background: "#6c63ff",
+                                    color: "#fff",
+                                    borderRadius: "50%",
+                                    textAlign: "center",
+                                    fontWeight: 700,
+                                    marginLeft: 8,
+                                    transition: "all 0.2s"
+                                }}
+                            >
+                                {totalCantidad}
+                            </span>
+                        )}
                     </Link>
                 </li>  
                 <li className="nav-bar li">
                     <Link to={user ? "/profile" : "/login"} ><FaUser />{user ? " Perfil" : " Login"}</Link>
                 </li>  
                 {admin ? <li className="nav-bar li">
-                    <Link to="/admin/agregar-producto" ><FaPlus /> Agregar Producto</Link>
+                    <Link to="/admin/agregar-producto" className="agregar-prod-link">
+                        <FaPlus /> Agregar
+                    </Link>
                 </li> : null}
             </ul>  
         </nav>  

@@ -11,7 +11,6 @@ function Home(){
     return(
         <div>
             <div>
-                <Header></Header>
                 <Main></Main>
             </div>
         </div>

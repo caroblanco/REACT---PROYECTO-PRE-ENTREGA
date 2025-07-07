@@ -20,6 +20,7 @@ import { dispararSweet } from './assets/sweetalert'
 import FormularioEdicion from './components/formularioEdicion';
 import { useAuthContext } from './context/AuthContext'
 import { useEffect } from 'react';
+import Header from './components/Header';
 
 function App() {
   const {verificacionLog} = useAuthContext();
@@ -30,6 +31,7 @@ function App() {
   return (
     <Router>
       <div id="root">
+        <Header/>
         <Nav/>
         <main>
           <Routes>

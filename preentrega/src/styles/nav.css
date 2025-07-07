@@ -1,27 +1,65 @@
-.nav-bar{
-    background-color: rgb(68, 68, 68);
-    color: white;
-    padding: 7px;
+.nav-bar {
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-radius: 18px;
+    margin: 18px auto 32px auto;
+    max-width: 1000px;
+    padding: 0.5rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.nav-bar li{
-    display: "flex";
-    justify-content: "space-around";
-    align-items:"center";
-    decoration:bold;
-    color: white;
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-bar li:hover{
-    background-color: rgb(110, 109, 109);
-    color: white;
-    transition: 0.3s;
+.nav-bar li {
+    margin: 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
 .nav-bar a {
-    color:white;
-    font-weight: bold;
+    color: #333;
     text-decoration: none;
-    font-size: 18px;
-  }
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.4em 0.8em;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-bar a:hover, .nav-bar a.active {
+    background: #f0f0f0;
+    color: #6c63ff;
+}
+
+.nav-bar .fa-shopping-cart {
+    color: #6c63ff;
+}
+
+.agregar-prod-link {
+    padding: 0.2em 0.6em !important;
+    font-size: 1em;
+    border-radius: 6px;
+}
+
+@media (max-width: 700px) {
+    .nav-bar {
+        max-width: 98vw;
+        padding: 0.5rem 0.5rem;
+    }
+    .nav-bar ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
 

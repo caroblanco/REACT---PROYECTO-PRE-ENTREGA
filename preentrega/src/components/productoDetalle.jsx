@@ -81,20 +81,21 @@ function ProductoDetalle({ }) {
                     <h2>{productoEncontrado.nombre}</h2>
                     <p>{productoEncontrado.descripcion}</p>
                     <p style={{fontWeight: 'bold'}}>${productoEncontrado.precio}</p>
-                    <div>
+                    <div className="mb-3 d-flex justify-content-center align-items-center gap-2">
                         <button className="productos-button" onClick={handleDecrement}>-</button>
-                        <span>{cantidad}</span>
+                        <span className="mx-2">{cantidad}</span>
                         <button className="productos-button" onClick={handleIncrement}>+</button>
                     </div>
-                    {admin ? (<div>
+                    {admin ? (
+                        <div >
                             <button className="productos-button" onClick={navegar}>Editar producto</button>
                             <button className="productos-button" onClick={() => handleEliminar(productoEncontrado.id)}>
-  Eliminar producto
-</button>
-                            </div>
-                        ) : (
+                Eliminar producto
+            </button>
+                        </div>
+                    ) : (
                         <button className="productos-button" onClick={handleAddToCart}>Agregar al carrito</button>
-                        )}
+                    )}
                 </div>
             </div>
         </div>
