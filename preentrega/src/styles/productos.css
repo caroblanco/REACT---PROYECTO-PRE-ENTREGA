@@ -59,3 +59,24 @@
     color: white;
     transition: 0.3s;
 }
+
+.cantidad-button {
+  border: none;
+  background: #e9ecef;
+  color: #111;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cantidad-button:hover {
+  background: #6c63ff;
+  color: #fff;
+}

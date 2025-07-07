@@ -31,11 +31,11 @@ function Nav({}) {
                             <span
                                 style={{
                                     display: "inline-block",
-                                    minWidth: 22,
-                                    height: 22,
-                                    lineHeight: "22px",
-                                    fontSize: "0.95em",
-                                    background: "#6c63ff",
+                                    minWidth: 28,           // antes 22
+                                    height: 28,             // antes 22
+                                    lineHeight: "28px",     // antes "22px"
+                                    fontSize: "1 rem",     // un poco más grande
+                                    background: "#333",
                                     color: "#fff",
                                     borderRadius: "50%",
                                     textAlign: "center",

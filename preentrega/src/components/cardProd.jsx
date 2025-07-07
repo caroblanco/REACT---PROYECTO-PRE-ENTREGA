@@ -37,13 +37,13 @@ function handleDecrement() {
                         
                         <img className='productos-image mb-2' src={producto.imagen}></img>
                         <p style={{fontWeight: 'bold'}}>${producto.precio}</p>
-                        <div className="mb-3">
-                          <button className="productos-button" onClick ={handleDecrement}>-</button>
-                          <span>{cantidad}</span>
-                          <button className="productos-button" onClick ={handleIncrement}>+</button>
+                        <div className="mb-3 d-flex justify-content-center align-items-center gap-2">
+                          <button className="cantidad-button" onClick={handleDecrement}>-</button>
+                          <span style={{ minWidth: 24, textAlign: "center",color:"black" }}>{cantidad}</span>
+                          <button className="cantidad-button" onClick={handleIncrement}>+</button>
                         </div>
-                        <button className="btn btn-secondary mb-2" onClick={handleAddToCart}>Agregar al carrito</button>
-                        <button className='btn btn-secondary mb-3' onClick={navegar}>Ver producto</button>
+                        <button className="btn btn-success mb-2 w-100" onClick={handleAddToCart}>Agregar al carrito</button>
+                        <button className="btn btn-outline-secondary mb-3 w-100" onClick={navegar}>Ver producto</button>
                         </div>
                     </div>
     </div>

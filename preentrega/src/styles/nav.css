@@ -39,11 +39,26 @@
 
 .nav-bar a:hover, .nav-bar a.active {
     background: #f0f0f0;
-    color: #6c63ff;
+    color: #333;
 }
 
 .nav-bar .fa-shopping-cart {
-    color: #6c63ff;
+    color: #333;
+}
+
+.nav-bar .carrito-badge {
+    background: #333 !important;
+    color: #fff !important;
+    border-radius: 50%;
+    min-width: 22px;
+    height: 22px;
+    display: inline-block;
+    text-align: center;
+    line-height: 22px;
+    font-size: 0.95em;
+    font-weight: 700;
+    margin-left: 8px;
+    transition: all 0.2s;
 }
 
 .agregar-prod-link {
