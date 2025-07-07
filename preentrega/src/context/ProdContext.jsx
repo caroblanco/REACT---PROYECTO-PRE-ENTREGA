@@ -20,6 +20,8 @@ export function ProdProvider({ children }) {
       if (!respuesta.ok) throw new Error('Error al agregar el producto');
       const datos = await respuesta.json();
       setProductos((prev) => [...prev, datos]);
+      dispararSweet('Producto Agregado','Producto agregado correctamente.', 'success','Cerrar');
+
       return datos;
     } catch (error) {
       throw error;
@@ -70,7 +72,7 @@ export function ProdProvider({ children }) {
           resolve();
         } catch (error) {
           console.error(error.message);
-          alert('Hubo un problema al eliminar el producto.');
+          dispararSweet('Hubo un problema al eliminar el producto.','No se ha podido eliminar el producto.', 'error','Cerrar');
           reject(error);
         }
       } else {
@@ -101,6 +103,11 @@ export function ProdProvider({ children }) {
   console.log('Llamando a editarProducto con id:', producto.id);
   return new Promise(async (resolve, reject) => {
       try {
+          const result = await dispararSweet2('¿Estás seguro que desea editar el producto?', 'Esta acción alterara los valores del producto y no se puede deshacer.', 'warning', 'Sí, editar', 'Cancelar');
+          if (!result.isConfirmed) {
+              resolve(); // Si cancela, resuelve igual para evitar promesas colgadas
+              return;
+          }
           const respuesta = await fetch(`https://6810114727f2fdac24103476.mockapi.io/products/product/${producto.id}`, {
               method: 'PUT',
               headers: {
@@ -112,10 +119,11 @@ export function ProdProvider({ children }) {
               throw new Error('Error al actualizar el producto.');
           }
           const data = await respuesta.json();
+          dispararSweet('Producto Editado','Producto editado correctamente.', 'success','Cerrar');
           resolve(data);
           } catch (error) {
               console.error(error.message);
-              alert('Hubo un problema al actualizar el producto.' + error.message);
+              dispararSweet('Hubo un problema al actualizar el producto.','No se ha podido editar el producto.', 'error','Cerrar');
               reject(error)
           }
           

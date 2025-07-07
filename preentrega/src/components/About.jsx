@@ -1,9 +1,9 @@
 function About() {
   return (
     <div>
-      <h1>About</h1>
-      <h3>Hello World! I am Caro. </h3>
-      <p>As a Systems Engineer with over three years of experience in project management, data and business analysis, and proficiency in SQL and Agile Scrum, I am committed to delivering innovative solutions and achieving excellence in every project. I am a proactive learner and always seek new challenges to foster my professional growth. My goal is to contribute my skills and knowledge to the field of systems engineering and make a positive impact.</p>
+      <h1>Sobre Nosotros</h1>
+      <h3>Hecho con amor</h3>
+      <p>Sweateres María nació del amor por lo artesanal y el deseo de ofrecer prendas únicas que transmitan calidez y estilo. Creemos en la moda sostenible y en el trabajo responsable, por eso cada sweater es tejido cuidadosamente, con materiales de calidad y detalles que marcan la diferencia. Somos una marca argentina que celebra la belleza de lo simple y lo bien hecho. Queremos que cada persona que vista Sweateres María se sienta cómoda, especial y abrazada por la suavidad de nuestras prendas.</p>
     </div>
   );
 }

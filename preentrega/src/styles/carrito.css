@@ -24,6 +24,12 @@
     margin: 10px;
     padding: 20px; /* Agrega espacio interno */
     gap: 15px; /* Espaciado entre los elementos */
+    transition: box-shadow 0.2s;
+}
+
+.carrito-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    background: #f8f9fa;
 }
 
 .carrito-image {

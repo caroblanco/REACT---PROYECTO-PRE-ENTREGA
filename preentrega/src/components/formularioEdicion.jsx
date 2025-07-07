@@ -3,6 +3,7 @@ import { ProdContext } from '../context/ProdContext.jsx';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext.jsx';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { dispararSweet, dispararSweet2 } from '../assets/sweetalert.js';
 
 function FormularioEdicion({ onActualizar }) {
   const { buscarProducto, productoEncontrado, editarProducto } = useContext(ProdContext);
@@ -23,7 +24,7 @@ function FormularioEdicion({ onActualizar }) {
       buscarProducto(id)
         .catch((error) => {
           console.error('Error al cargar el producto:', error);
-          alert('Hubo un problema al cargar el producto.');
+          dispararSweet('Hubo un problema al cargar el producto.','No se ha podido cargar el producto.', 'error','Cerrar');
         });
     }
     // eslint-disable-next-line
@@ -47,11 +48,9 @@ function FormularioEdicion({ onActualizar }) {
     if(validarForm){
         editarProducto(producto).then((actualizado) => {
         setProducto(actualizado);
-        alert('Producto actualizado correctamente.');
         navigate('/productos/' + producto.id); // <-- Así está bien
         }).catch((error) => {
         console.error('Error al actualizar el producto:', error);
-        alert('Hubo un problema al actualizar el producto.');
         });
     }
         

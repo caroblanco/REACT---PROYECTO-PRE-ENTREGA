@@ -14,7 +14,7 @@ function Footer() {
                     <Link to="/contact" >Contacto</Link>
                 </li>  
             </ul>   
-            <p>&copy; 2025 - Caro devorando en react</p> 
+            <p>&copy; React 2025 - Carolina Blanco</p> 
         </footer>  
     );  
 }  

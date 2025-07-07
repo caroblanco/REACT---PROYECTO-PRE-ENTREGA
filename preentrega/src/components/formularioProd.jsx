@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ProdContext } from '../context/ProdContext.jsx';
+import { dispararSweet } from '../assets/sweetalert.js';
 
 function FormularioProducto() {
   const [producto, setProducto] = useState({
@@ -43,7 +44,7 @@ function FormularioProducto() {
           setErrores({});
         })
         .catch(() => {
-          alert('Error al agregar el producto');
+          dispararSweet('Error al agregar el producto','No se ha podido agregar el producto.', 'error','Cerrar');
         });
     }
   };

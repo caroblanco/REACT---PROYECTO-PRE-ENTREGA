@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import { crearUsuario, iniciarSesion } from '../auth/firebase';
+import { dispararSweet } from '../assets/sweetalert.js';
 
 function Login() {
   const [loginUser, setLoginUser] = useState('');
@@ -24,7 +25,7 @@ function Login() {
         navigate('/');
       })
       .catch((error) => {
-        alert('Credenciales incorrectas');
+        dispararSweet('Error al iniciar sesión','Credenciales incorrectas.', 'error','Cerrar');
       });
   };
 
@@ -39,7 +40,7 @@ function Login() {
         navigate('/');
       })
       .catch((error) => {
-        alert('Error al registrar usuario');
+        dispararSweet('Error al registrar usuario','No se ha podido registrar el usuario.', 'error','Cerrar');
       });
   }
 
